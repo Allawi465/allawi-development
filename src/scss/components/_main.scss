@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, #FDFCFB, #E2D1C3);
+    min-height: 100vh;
+}
+
+
+.mainPage {
+    display: flex;
+    font-family: sans-serif;
+    line-height: 30px;
+    font-size: 30px;
+    margin: 0px 50px 40px;
+    background-size: 100% 30px;
+    background-position: 0 0;
+    background-image: linear-gradient(to bottom,
+            white,
+            white 29px,
+            lightskyblue);
+    box-shadow: #cdcdcd 1px 2px,
+        #d2d2d2 2px 4px,
+        #d7d7d7 3px 6px,
+        #dcdcdc 4px 8px,
+        #e1e1e1 5px 10px,
+        #e6e6e6 6px 12px,
+        #ebebeb 7px 14px,
+        #f0f0f0 8px 16px,
+        #f5f5f5 9px 18px,
+        #fafafa 10px 20px,
+        rgba(0, 0, 0, .3) 10px 20px 15px;
+}
+
+textarea {
+    flex: 1;
+    min-height: 2em;
+    outline: none;
+    font-size: 30px;
+    line-height: 30px;
+    padding: 1em;
+    border: none;
+    border-top: 1px dashed rgba(0, 0, 0, .15);
+    color: #444;
+    letter-spacing: .02em;
+    background-size: 100% 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, .1));
+    overflow: hidden;
+}
+
+#input2 {
+    color: darkblue;
+    background-color: rgba(0, 200, 250, .1)
+}
+
+button {
+    position: relative;
+}
+
+.bi-keyboard {
+    position: relative;
+    bottom: 2px;
+}
+
+.keyboard {
+    display: none;
+}
+
+
+/* CSS */
+.button-boot {
+    align-items: center;
+    background-color: #fee6e3;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-boot:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 48px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.button-boot:hover:after {
+    transform: translate(0, 0);
+}
+
+.bbutton-boot:active {
+    background-color: #ffdeda;
+    outline: 0;
+}
+
+.button-boot:hover {
+    outline: 0;
+}
+
+@media (min-width: 768px) {
+    .bbutton-boot {
+        padding: 0 40px;
+    }
+}
