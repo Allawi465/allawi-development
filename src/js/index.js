@@ -1,3 +1,5 @@
+
+
 let Keyboard = window.SimpleKeyboard.default;
 
 let keyboard = new Keyboard({
@@ -111,4 +113,17 @@ function handleLayoutChange(button) {
     });
   }
 }
+
+const kalkulatorBtn = document.getElementById("kalkulator").addEventListener("click", () => {
+
+});
+const tastaturBtn = document.getElementById("tastatur").addEventListener("click", () => {
+  const container = document.querySelector(".keyboardContainer");
+  const buttons = document.querySelectorAll(".button-boot");
+  buttons.forEach(btn => {
+    btn.style.display = "none";
+  })
+  container.style.display = "block";
+});
+
 
