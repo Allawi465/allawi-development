@@ -5,6 +5,7 @@
 body {
     background-image: linear-gradient(to bottom right, #FDFCFB, #E2D1C3);
     min-height: 100vh;
+    background-repeat: no-repeat;
 }
 
 
@@ -69,11 +70,10 @@ button {
 }
 
 .keyboard {
-    display: none;
+    display: block;
+    margin-top: 20px;
 }
 
-
-/* CSS */
 .button-boot {
     align-items: center;
     background-color: #fee6e3;
@@ -117,13 +117,72 @@ button {
     transform: translate(0, 0);
 }
 
-.bbutton-boot:active {
+.button-boot:active {
     background-color: #ffdeda;
     outline: 0;
 }
 
 .button-boot:hover {
     outline: 0;
+}
+
+section {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	place-items: center;
+	grid-gap: 5px;
+    margin-bottom: 5px;
+}
+
+section > span {
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 0;
+    background: white;
+    border-bottom: 1px solid #b5b5b5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    font-weight: 400;
+    font-size: 20px;
+    max-width: 60px;
+    min-width: 60px;
+    height: 60px;
+    min-height: 60px;
+}
+
+section > span:hover {
+    border: #FFCC33 2px solid;
+}
+
+section > span:nth-child(1) {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+
+section > span:nth-child(2) {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+
+section > span:nth-child(3) {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+
+section > span:nth-child(4) {
+	grid-column: 3;
+	grid-row: 2;
+}
+
+.calcContainer {
+    width: 220px;
 }
 
 @media (min-width: 768px) {
