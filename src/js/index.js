@@ -60,14 +60,12 @@ let keyboard2 = new Keyboard(".keyboard2", {
   theme: "hg-theme-default hg-layout-numeric numeric-theme",
   ...options,
   layout: {
-    default: ["1 2 3", "4 5 6", "7 8 9", "{shift} 0 _", "{bksp}"],
-    shift: ["! / #", "$ % ^", "& * (", "{shift} ) +", "{bksp}"]
+    default: ["1 2 3 4", "4 5 6 7", "8 9 0 =", "- + * : %", "{bksp}"],
   },
 });
 
 document.querySelector(".input").addEventListener("input", event => {
   keyboard.setInput(event.target.value);
-  input.focus();
 });
 
 console.log(keyboard);
@@ -84,18 +82,17 @@ function onKeyPress(button) {
    * Handle toggles
    */
   if (button.includes("{") && button.includes("}")) {
+    input.focus();
     handleLayoutChange(button);
   }
 }
 
 function handleLayoutChange(button) {
-  input.focus();
   let currentLayout = keyboard.options.layoutName;
   let layoutName;
 
   switch (button) {
     case "{shift}":
-    case "{shiftactivated}":
     case "{default}":
       layoutName = currentLayout === "default" ? "shift" : "default";
       break;
