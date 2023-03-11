@@ -1,11 +1,20 @@
 
 
 let Keyboard = window.SimpleKeyboard.default;
+const input = document.getElementById('input');
 
-let keyboard = new Keyboard({
+let options = {
   onChange: input => onChange(input),
   onKeyPress: button => onKeyPress(button),
-  theme: "hg-theme-default hg-theme-ios",
+
+  // To keep inputs syncronized
+  mergeDisplay: true,
+  syncInstanceInputs: true
+};
+
+let keyboard = new Keyboard(".keyboard1", {
+  ...options,
+  theme: "hg-theme-default myTheme1",
   layout: {
     default: [
       "1 2 3 4 5 6 7 8 9 0",
@@ -42,35 +51,31 @@ let keyboard = new Keyboard({
     "{enter}": "enter",
     "{bksp}": "⌫",
     "{altright}": ".?123",
-    "{space}": " ",
+    "{space}": "space",
     "{default}": "ABC",
-  }
+  },
 });
 
-document.querySelectorAll(".input").forEach(input => {
-    input.addEventListener("focus", onInputFocus);
-    // Optional: Use if you want to track input changes
-    // made without simple-keyboard
-    input.addEventListener("input", onInputChange);
+let keyboard2 = new Keyboard(".keyboard2", {
+  theme: "hg-theme-default hg-layout-numeric numeric-theme",
+  ...options,
+  layout: {
+    default: ["1 2 3", "4 5 6", "7 8 9", "{shift} 0 _", "{bksp}"],
+    shift: ["! / #", "$ % ^", "& * (", "{shift} ) +", "{bksp}"]
+  },
 });
-  
-function onInputFocus(event) {
-    selectedInput = `#${event.target.id}`;
-  
-    keyboard.setOptions({
-      inputName: event.target.id
-    });
-}
-  
-function onInputChange(event) {
-    keyboard.setInput(event.target.value, event.target.id);
-}
-  
+
+document.querySelector(".input").addEventListener("input", event => {
+  keyboard.setInput(event.target.value);
+  input.focus();
+});
+
+console.log(keyboard);
+
 function onChange(input) {
-    console.log("Input changed", input);
-    document.querySelector(selectedInput || ".input").value = input;
+  document.querySelector(".input").value = input;
+  console.log("Input changed", input);
 }
-
 
 function onKeyPress(button) {
   console.log("Button pressed", button);
@@ -84,6 +89,7 @@ function onKeyPress(button) {
 }
 
 function handleLayoutChange(button) {
+  input.focus();
   let currentLayout = keyboard.options.layoutName;
   let layoutName;
 
@@ -114,16 +120,46 @@ function handleLayoutChange(button) {
   }
 }
 
-const kalkulatorBtn = document.getElementById("kalkulator").addEventListener("click", () => {
+const containerKeyboard = document.querySelector(".keyboard1");
+const containerCalculator = document.querySelector(".keyboard2");
+const navKeyboard = document.querySelector(".active-keyboard");
+const navCalculator = document.querySelector(".active-calculator");
 
-});
-const tastaturBtn = document.getElementById("tastatur").addEventListener("click", () => {
-  const container = document.querySelector(".keyboardContainer");
+const keyboardBtn = () => {
+  input.focus();
   const buttons = document.querySelectorAll(".button-boot");
   buttons.forEach(btn => {
     btn.style.display = "none";
   })
-  container.style.display = "block";
-});
+  containerKeyboard.style.display = "block";
+  containerCalculator.style.display = "none";
+  navKeyboard.classList.add("active");
+  navCalculator.classList.remove("active");
+};
+
+document.querySelector("#keyboard-link").addEventListener("click", keyboardBtn);
+document.querySelector("#keyboard-btn").addEventListener("click", keyboardBtn);
 
 
+const calculatorBtn = () => {
+  input.focus();
+  const buttons = document.querySelectorAll(".button-boot");
+  buttons.forEach(btn => {
+    btn.style.display = "none";
+  })
+  containerCalculator.style.display = "block";
+  containerKeyboard.style.display = "none";
+  navCalculator.classList.add("active");
+  navKeyboard.classList.remove("active");
+};
+
+
+document.querySelector("#calculator-link").addEventListener("click", calculatorBtn);
+document.querySelector("#calculator-btn").addEventListener("click", calculatorBtn);
+
+const upBtn = document.getElementById('up-btn');
+const leftBtn = document.getElementById('left-btn');
+const downBtn = document.getElementById('down-btn');
+const rightBtn = document.getElementById('right-btn');
+const spaceBtn = document.getElementById('space-btn');
+const enterBtn = document.getElementById('enter-btn');

@@ -1,102 +1,97 @@
-/**
-   * hg-theme-default theme
-  */
 
-.simple-keyboard.hg-theme-ios {
-  width: 890px;
-  margin: auto;
+
+
+.simple-keyboard1 {
+  max-width: 850px;
 }
 
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-row .hg-button {
-  flex-grow: 1;
-  cursor: pointer;
-  max-width: initial;
+
+.keyboard1.myTheme1 {
+  background-color: transparent;
+  border-radius: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
-.simple-keyboard.hg-theme-ios .hg-row {
+.keyboard1.myTheme1 .hg-button {
+  height: 50px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+
+  &:hover {
+    background: #FFCC33;
+    color: black;
+  }
 }
 
-.simple-keyboard.hg-theme-ios .hg-row:not(:last-child) {
+.keyboard1.myTheme1 .hg-button:active {
+  background: #FFCC33;
+  color: black;
+}
+
+section {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	place-items: center;
+	grid-gap: 5px;
   margin-bottom: 5px;
 }
 
-.simple-keyboard.hg-theme-ios .hg-row .hg-button:not(:last-child) {
-  margin-right: 5px;
+section > span {
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    font-weight: 400;
+    max-width: 60px;
+    min-width: 60px;
+    height: 60px;
+    min-height: 60px;
 }
 
-.simple-keyboard.hg-theme-ios .hg-row:nth-child(2) {
-  margin-left: 5px;
-  margin-right: 5px;
+section > span:hover {
+    border: #FFCC33 2px solid;
 }
 
-.simple-keyboard.hg-theme-ios.hg-theme-default {
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.simple-keyboard.hg-theme-ios.hg-theme-default.hg-layout-custom {
-  background-color: #e5e5e5;
-  padding: 5px;
-}
-
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button {
-  border-radius: 5px;
-  box-sizing: border-box;
-  padding: 0;
-  background: white;
-  border-bottom: 1px solid #b5b5b5;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none;
-  font-weight: 400;
-  font-size: 20px;
-  max-width: 60px;
-  min-width: 60px;
-  height: 60px;
-  min-height: 60px;
-}
-
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button:active,
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button:focus {
-  background: #FFCC33;
-}
-
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button:hover, 
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button:focus {
+.key.active {
   border: #FFCC33 2px solid;
 }
 
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button.hg-functionBtn {
-  background-color: #adb5bb;
+section > span:nth-child(1) {
+	grid-column: 2;
+	grid-row: 1;
 }
 
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button.hg-button-space,
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button.hg-button-shift,
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button.hg-button-shiftactivated {
-  background-color: #ffffff;
+
+section > span:nth-child(2) {
+	grid-column: 1;
+	grid-row: 2;
 }
 
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button-space {
-  max-width: 448px;
-  min-width: 448px;
+
+section > span:nth-child(3) {
+	grid-column: 2;
+	grid-row: 2;
 }
 
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button-enter {
-  max-width: 110px;
-  min-width: 110px;
+
+section > span:nth-child(4) {
+	grid-column: 3;
+	grid-row: 2;
 }
 
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button-bksp {
-  max-width: 110px;
-  min-width: 110px;
-}
-
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button-altright,
-.simple-keyboard.hg-theme-ios.hg-theme-default .hg-button-back {
-  min-width: 80px;
-  max-width: 80px;
-}
+.arrows {
+    width: 220px;
+}  
