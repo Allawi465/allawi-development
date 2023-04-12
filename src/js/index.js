@@ -6,13 +6,50 @@ const input = document.getElementById('input');
 let options = {
   onChange: input => onChange(input),
   onKeyPress: button => onKeyPress(button),
-
-  // To keep inputs syncronized
-  mergeDisplay: true,
-  syncInstanceInputs: true,
+  // To keep inputs synchronized
   preventMouseDownDefault: true,
   newLineOnEnter: true,
+  physicalKeyboardHighlight: true,
+  syncInstanceInputs: true,
+  mergeDisplay: true,
 };
+
+
+function onKeyPress(button) {
+  console.log("Button pressed", button);
+  /**
+   * Handle toggles
+   */
+  if (button.includes("{") && button.includes("}")) {
+    handleLayoutChange(button);
+  }
+}
+
+function onChange(input) {
+  let inputElement = document.querySelector(".input");
+
+  /**
+   * Updating input's value
+   */
+  inputElement.value = input;
+  console.log("Input changed", input);
+
+  /**
+   * Synchronizing input caret position
+   */
+  let caretPosition = keyboard.caretPosition;
+  if (caretPosition !== null)
+    setInputCaretPosition(inputElement, caretPosition);
+
+  console.log("caretPosition", caretPosition);
+}
+
+function setInputCaretPosition(elem, pos) {
+  if (elem.setSelectionRange) {
+    elem.focus();
+    elem.setSelectionRange(pos, pos);
+  }
+}
 
 let keyboard = new Keyboard(".keyboard1", {
   ...options,
@@ -62,31 +99,13 @@ let keyboard2 = new Keyboard(".keyboard2", {
   theme: "hg-theme-default hg-layout-numeric numeric-theme",
   ...options,
   layout: {
-    default: ["1 2 3 4", "4 5 6 7", "8 9 0 =", "- + * : %", "{bksp}"],
+    default: ["1 2 3 4", "4 5 6 7", "8 9 0 =", "- + * : %", "{bksp} {enter}"],
   },
 });
 
-document.querySelector(".input").addEventListener("input", event => {
-  keyboard.setInput(event.target.value);
-});
 
 console.log(keyboard);
 
-function onChange(input) {
-  document.querySelector(".input").value = input;
-  console.log("Input changed", input);
-}
-
-function onKeyPress(button) {
-  console.log("Button pressed", button);
-
-  /**
-   * Handle toggles
-   */
-  if (button.includes("{") && button.includes("}")) {
-    handleLayoutChange(button);
-  }
-}
 
 function handleLayoutChange(button) {
   let currentLayout = keyboard.options.layoutName;
@@ -118,22 +137,27 @@ function handleLayoutChange(button) {
   }
 }
 
+document.querySelector(".input").addEventListener("input", event => {
+  keyboard.setInput(event.target.value);
+});
+
+
 const containerKeyboard = document.querySelector(".keyboard1");
 const containerCalculator = document.querySelector(".keyboard2");
 const navKeyboard = document.querySelector(".active-keyboard");
 const navCalculator = document.querySelector(".active-calculator");
 
-const keyboardBtn = () => {
+function keyboardBtn() {
   input.focus();
   const buttons = document.querySelectorAll(".button-boot");
   buttons.forEach(btn => {
     btn.style.display = "none";
-  })
+  });
   containerKeyboard.style.display = "block";
   containerCalculator.style.display = "none";
   navKeyboard.classList.add("active");
   navCalculator.classList.remove("active");
-};
+}
 
 document.querySelector("#keyboard-link").addEventListener("click", keyboardBtn);
 document.querySelector("#keyboard-btn").addEventListener("click", keyboardBtn);
@@ -156,39 +180,6 @@ document.querySelector("#calculator-link").addEventListener("click", calculatorB
 document.querySelector("#calculator-btn").addEventListener("click", calculatorBtn);
 
 
-const upBtn = document.getElementById('up-btn');
-upBtn.addEventListener('click', () => {
-  const selectionStart = input.selectionStart;
-  const value = input.value;
-  const previousLineEnd = value.lastIndexOf('\n', selectionStart - 2);
-  const previousLineStart = value.lastIndexOf('\n', previousLineEnd - 1);
-  
-  // calculate the new cursor position
-  let newCursorPosition;
-  if (previousLineEnd !== -1) {
-    const lineLength = selectionStart - previousLineEnd;
-    const previousLineLength = previousLineEnd - previousLineStart;
-    newCursorPosition = Math.min(selectionStart - lineLength, previousLineStart + lineLength + Math.min(lineLength, previousLineLength));
-  } else {
-    newCursorPosition = 0;
-  }
-  
-  // set the new cursor position
-  input.setSelectionRange(newCursorPosition, newCursorPosition);
-});
-const downBtn = document.getElementById('down-btn');
-downBtn.addEventListener('click', () => {
-  const selectionStart = input.selectionStart;
-  const value = input.value;
-  const currentPosition = value.lastIndexOf('\n', selectionStart - 2);
-  const nextLine = value.indexOf('\n', selectionStart);
-  if (nextLine !== -1) {
-    input.setSelectionRange(nextLine + (selectionStart - currentPosition), nextLine + (selectionStart - currentPosition));
-  } else {
-    input.setSelectionRange(value.length, value.length);
-  }
-});
-
 const leftBtn = document.getElementById('left-btn');
 leftBtn.addEventListener('click', () => {
   const selectionStart = input.selectionStart;
@@ -203,4 +194,28 @@ rightBtn.addEventListener('click', () => {
   if (selectionStart < input.value.length) {
     input.setSelectionRange(selectionStart + 1, selectionStart + 1);
   }
+});
+
+
+
+const upBtn = document.getElementById('up-btn');
+upBtn.addEventListener('click', () => {
+  const selectionStart = input.selectionStart;
+  const value = input.value;
+  const previousLineEnd = value.lastIndexOf('\n', selectionStart - 2);
+  const previousLineStart = value.lastIndexOf('\n', previousLineEnd - 1);
+  
+  // calculate the new cursor position
+  let newCursorPosition;
+  
+  if (previousLineEnd !== -1) {
+    const lineLength = selectionStart - previousLineEnd;
+    const previousLineLength = previousLineEnd - previousLineStart;
+    newCursorPosition = Math.min(selectionStart - lineLength, previousLineStart + lineLength + Math.min(lineLength, previousLineLength));
+  } else {
+    newCursorPosition = 0;
+  }
+  
+  // set the new cursor position
+  input.setSelectionRange(newCursorPosition, newCursorPosition);
 });
