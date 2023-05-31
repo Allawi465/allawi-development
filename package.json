@@ -1,13 +1,14 @@
 {
-  "name": "startup",
+  "name": "Notebook",
   "version": "1.0.0",
-  "description": "start up testing on ",
+  "description": "Notebook",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sass src/scss:dist/css",
-    "watch": "sass --watch src/scss:dist/css & live-server"
+    "start": "sass --watch src/scss:dist/css & live-server"
   },
+  "keywords": [],
   "author": "Allawi",
   "license": "ISC",
   "devDependencies": {
