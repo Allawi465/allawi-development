@@ -1,0 +1,25 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(8, 70px);
+  grid-template-rows: repeat(6, 70px);
+  grid-column-gap: 0px;
+  background: rgba(255, 255, 255, 0.9);
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  grid-row-gap: 0px;
+  width: 560px;
+  margin: 100px auto;
+}
+
+.numbers {
+  text-align: center;
+  line-height: 60px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  display: flex;
+  font-size: 35px !important;
+  justify-content: center;
+  flex-wrap: nowrap;
+  color: black;
+  overflow: hidden;
+}

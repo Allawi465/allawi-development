@@ -1,0 +1,35 @@
+.fraction {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+
+.fraction .numerator,
+.fraction .denominator {
+  line-height: 1.5;
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+}
+
+.fraction .numerator {
+  bottom: 50%;
+}
+
+.fraction .denominator {
+  top: 50%;
+}
+
+.fraction .divider {
+  border-top: 1px solid black;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 50%;
+  height: 1px;
+}

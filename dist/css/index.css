@@ -232,4 +232,66 @@ button {
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
 }
 
+.fraction {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+
+.fraction .numerator,
+.fraction .denominator {
+  line-height: 1.5;
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+}
+
+.fraction .numerator {
+  bottom: 50%;
+}
+
+.fraction .denominator {
+  top: 50%;
+}
+
+.fraction .divider {
+  border-top: 1px solid black;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 50%;
+  height: 1px;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(8, 70px);
+  grid-template-rows: repeat(6, 70px);
+  grid-column-gap: 0px;
+  background: rgba(255, 255, 255, 0.9);
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  grid-row-gap: 0px;
+  width: 560px;
+  margin: 100px auto;
+}
+
+.numbers {
+  text-align: center;
+  line-height: 60px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  display: flex;
+  font-size: 35px !important;
+  justify-content: center;
+  flex-wrap: nowrap;
+  color: black;
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=index.css.map */
