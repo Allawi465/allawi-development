@@ -159,6 +159,61 @@ textarea::-webkit-scrollbar-track {
   height: 1px;
 }
 
+/*
+  Theme: numeric
+*/
+.keyboard2.numeric-theme {
+  max-width: 320px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.keyboard2.numeric-theme + .simple-keyboard-preview {
+  max-width: 320px;
+}
+
+.keyboard2.simple-keyboard.hg-theme-default.numeric-theme .hg-button.hg-standardBtn.hg-button-at {
+  max-width: none;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.keyboard2.numeric-theme .hg-button {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+.keyboard2.numeric-theme .hg-button:hover {
+  background: #ffcc33;
+  color: black;
+}
+
+.calculator {
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.button {
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: black;
+}
+
+.button:hover {
+  background-color: #f2f2f2;
+}
+
 .parent {
   display: grid;
   grid-template-columns: repeat(17, 65px);
@@ -169,6 +224,7 @@ textarea::-webkit-scrollbar-track {
   border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .numbers {

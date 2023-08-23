@@ -5,8 +5,6 @@ import { clearAllDivs, clearSelectedDivs } from './clear/index.mjs';
 import { toggleSelected } from './Utils/toggleSelected.mjs';
 import { applyBorderToDivs } from './border/index.mjs';
 
-const clearButton = document.getElementById('clearButton');
-
 let fractionMode = false;
 
 document
@@ -27,7 +25,7 @@ document
     applyBorderToDivs('single-line');
   });
 
-clearButton.addEventListener('click', function () {
+document.getElementById('clearButton').addEventListener('click', function () {
   clearAllDivs();
 });
 

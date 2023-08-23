@@ -29,7 +29,7 @@ function initializeEventListeners() {
       if (lastFocusedDiv.textContent.length > 3) {
         lastFocusedDiv.textContent = lastFocusedDiv.textContent.slice(0, 3);
 
-        let nextDiv = lastFocusedDiv.closest('.numbers').nextElementSibling;
+        let nextDiv = lastFocusedDiv.nextElementSibling;
         console.log(nextDiv);
         while (nextDiv && !nextDiv.isContentEditable) {
           nextDiv = nextDiv.nextElementSibling;
