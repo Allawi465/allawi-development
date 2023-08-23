@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"
+    defer></script>
   <script src="./src/js/cal/index.mjs" type="module" defer></script>
   <title>Notebook</title>
 </head>
@@ -22,7 +25,7 @@
         <nav class="nav nav-masthead justify-content-center float-md-end">
           <a class="nav-link active-keyboard fw-bold py-1 px-0" id="keyboard-link" href="./index.html"
             style="cursor: pointer;">keyboard</a>
-          <a class="nav-link active-calculator fw-bold py-1 px-0" id="calculator-link" href="./ruter.html"
+          <a class="nav-link active-calculator fw-bold py-1 px-0" id="calculator-link" href="./imath.html"
             style="cursor: pointer;">Calculator</a>
         </nav>
       </div>
@@ -30,14 +33,34 @@
 
     <main>
 
-      <div>
+      <div class="navbar d-flex justify-content-center">
         <button id="fractionButton">
           fraction
         </button>
         <button id="clearButton">
-          clear
+          Nullstill
         </button>
+        <button id="clearSelected">
+          merkerte
+        </button>
+
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Dropup
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" id="doubleLineItem">double line</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" id="singleLineItem">one line</a></li>
+          </ul>
+
+        </div>
+
       </div>
+
       <div class="parent">
 
       </div>
