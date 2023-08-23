@@ -1,4 +1,4 @@
-import { handleNumberInput } from '../initialize/calBtns.mjs';
+import { handleNumberInput } from '../initialize/deleteContent.mjs';
 
 function toggleFraction(divElement) {
   if (divElement.querySelector('.fraction')) {

@@ -1,32 +1,5 @@
 let lastFocusedDiv = null;
 
-function handleNumberInput(e) {
-  if (
-    e.inputType === 'deleteContentBackward' ||
-    e.inputType === 'deleteContentForward'
-  ) {
-    return;
-  }
-
-  if (this.textContent.length > 3) {
-    this.textContent = this.textContent.slice(0, 3);
-
-    let nextDiv = this.nextElementSibling;
-    while (nextDiv && !nextDiv.isContentEditable) {
-      nextDiv = nextDiv.nextElementSibling;
-    }
-    if (nextDiv) {
-      nextDiv.focus();
-    }
-  }
-}
-
-function handleFocus(e) {
-  if (!e.target.textContent.trim()) {
-    e.target.innerHTML = '&nbsp;';
-  }
-}
-
 function getFocusedNumberDiv() {
   const editableElements = document.querySelectorAll(
     '.numbers, .numerator, .denominator'
@@ -72,4 +45,4 @@ function initializeEventListeners() {
   });
 }
 
-export { initializeEventListeners, handleFocus, handleNumberInput };
+export { initializeEventListeners };

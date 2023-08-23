@@ -4,16 +4,18 @@ function clearAllDivs() {
 
   divs.forEach((div) => {
     div.textContent = '';
-    div.classList.remove(
-      'double-border',
-      'single-border',
-      'selected',
-      'active'
-    );
+    div.classList.remove('single-line', 'double-line', 'selected', 'active');
 
-    // Add this line to set the contenteditable attribute to 'true'
     div.setAttribute('contenteditable', 'true');
   });
 }
 
-export { clearAllDivs };
+function clearSelectedDivs() {
+  const selectedDivs = document.querySelectorAll('.numbers.selected');
+
+  selectedDivs.forEach((div) => {
+    div.classList.remove('selected');
+  });
+}
+
+export { clearAllDivs, clearSelectedDivs };

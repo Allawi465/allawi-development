@@ -1,15 +1,9 @@
-import {
-  handleNumberInput,
-  handleFocus,
-  initializeEventListeners,
-} from './initialize/calBtns.mjs';
+import { initializeEventListeners } from './initialize/calBtns.mjs';
+import { handleNumberInput, handleFocus } from './initialize/deleteContent.mjs';
 import { toggleFraction } from './fraction/index.mjs';
-/* import { setupDropdownMenu } from './render/Utils/dropdownUtils.mjs'; */
-/* import { setupSelection } from './render/Utils/selectionUtils.mjs'; clearSelectedDivs */
-import { clearAllDivs } from './clear/index.mjs';
-
-const dropdownMenu = document.querySelector('.dropdown-menu');
-const parentDiv = document.querySelector('.parent');
+import { clearAllDivs, clearSelectedDivs } from './clear/index.mjs';
+import { toggleSelected } from './Utils/toggleSelected.mjs';
+import { applyBorderToDivs } from './border/index.mjs';
 
 const clearButton = document.getElementById('clearButton');
 
@@ -21,20 +15,33 @@ document
     fractionMode = true;
   });
 
-/* setupDropdownMenu(parentDiv, dropdownMenu);
- */
-/* setupSelection(parentDiv); */
+document
+  .getElementById('doubleLineItem')
+  .addEventListener('click', function () {
+    applyBorderToDivs('double-line');
+  });
+
+document
+  .getElementById('singleLineItem')
+  .addEventListener('click', function () {
+    applyBorderToDivs('single-line');
+  });
 
 clearButton.addEventListener('click', function () {
   clearAllDivs();
 });
 
-/* document
-  .getElementById('removeButton')
-  .addEventListener('click', clearSelectedDivs); */
+document
+  .getElementById('clearSelected')
+  .addEventListener('click', clearSelectedDivs);
 
 document.addEventListener('DOMContentLoaded', function () {
   initializeEventListeners();
+  const divs = document.querySelectorAll('.numbers');
+  divs.forEach((div) => {
+    div.addEventListener('click', toggleSelected);
+    console.log('Event listener added to: ', div);
+  });
 });
 
 function renderDivs(numberOfDivs) {
@@ -57,8 +64,13 @@ function renderDivs(numberOfDivs) {
 
     parentDiv.appendChild(div);
   }
+
+  const divs = document.querySelectorAll('.numbers');
+  divs.forEach((div) => {
+    div.addEventListener('click', toggleSelected);
+  });
 }
 
 window.addEventListener('load', function () {
-  renderDivs(48);
+  renderDivs(85);
 });
