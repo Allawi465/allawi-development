@@ -1,25 +1,47 @@
 .parent {
   display: grid;
-  grid-template-columns: repeat(8, 70px);
-  grid-template-rows: repeat(6, 70px);
+  grid-template-columns: repeat(17, 65px);
+  grid-template-rows: repeat(5, 70px);
   grid-column-gap: 0px;
   background: rgba(255, 255, 255, 0.9);
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
-  width: 560px;
-  margin: 100px auto;
+  width: 100%;
 }
 
 .numbers {
+  z-index: 1;
   text-align: center;
   line-height: 60px;
-  border-left: 1px solid #ccc;
-  border-top: 1px solid #ccc;
+  border: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
   display: flex;
   font-size: 35px !important;
   justify-content: center;
   flex-wrap: nowrap;
   color: black;
   overflow: hidden;
+  box-sizing: border-box;
+}
+
+.numbers:focus {
+  outline: none;
+}
+
+.navbar {
+  margin-top: 40px;
+  gap: 5px;
+}
+
+.selected {
+  border: 2px solid purple !important;
+}
+
+.double-line {
+  border-bottom: double thick black;
+}
+
+.single-line {
+  border-bottom: 3px solid black;
 }
