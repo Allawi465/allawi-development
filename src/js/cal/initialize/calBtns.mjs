@@ -1,3 +1,4 @@
+import { setCursorAtEnd } from './deleteContent.mjs';
 let lastFocusedDiv = null;
 
 function getFocusedNumberDiv() {
@@ -12,6 +13,34 @@ function getFocusedNumberDiv() {
   return null;
 }
 
+function moveToNextDiv() {
+  if (lastFocusedDiv) {
+    let nextDiv = lastFocusedDiv.nextElementSibling;
+    while (nextDiv && !nextDiv.isContentEditable) {
+      nextDiv = nextDiv.nextElementSibling;
+    }
+    if (nextDiv) {
+      nextDiv.focus();
+      lastFocusedDiv = nextDiv;
+      setCursorAtEnd(nextDiv);
+    }
+  }
+}
+
+function moveToPreviousDiv() {
+  if (lastFocusedDiv) {
+    let prevDiv = lastFocusedDiv.previousElementSibling;
+    while (prevDiv && !prevDiv.isContentEditable) {
+      prevDiv = prevDiv.previousElementSibling;
+    }
+    if (prevDiv) {
+      setCursorAtEnd(prevDiv);
+      prevDiv.focus();
+      lastFocusedDiv = prevDiv;
+    }
+  }
+}
+
 function initializeEventListeners() {
   document.addEventListener('mousedown', function (e) {
     const currentlyFocusedDiv = getFocusedNumberDiv();
@@ -21,25 +50,43 @@ function initializeEventListeners() {
   });
 
   document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('button') && lastFocusedDiv) {
+    if (
+      e.target.classList.contains('button') &&
+      e.target.textContent !== '←' &&
+      e.target.textContent !== '→' &&
+      e.target.id !== 'space' &&
+      e.target.id !== 'deleting' &&
+      lastFocusedDiv
+    ) {
       lastFocusedDiv.textContent += e.target.textContent;
       lastFocusedDiv.textContent = lastFocusedDiv.textContent.trim();
-      console.log(lastFocusedDiv);
 
+      if (lastFocusedDiv.textContent.length >= 3) {
+        moveToNextDiv();
+      }
+    }
+  });
+
+  document.getElementById('left').addEventListener('click', moveToPreviousDiv);
+  document.getElementById('right').addEventListener('click', moveToNextDiv);
+
+  document.getElementById('space').addEventListener('click', function () {
+    if (lastFocusedDiv) {
+      lastFocusedDiv.textContent += ' ';
       if (lastFocusedDiv.textContent.length > 3) {
         lastFocusedDiv.textContent = lastFocusedDiv.textContent.slice(0, 3);
+        moveToNextDiv();
+      }
+    }
+  });
 
-        let nextDiv = lastFocusedDiv.nextElementSibling;
-        console.log(nextDiv);
-        while (nextDiv && !nextDiv.isContentEditable) {
-          nextDiv = nextDiv.nextElementSibling;
-        }
-        if (nextDiv) {
-          nextDiv.focus();
-          lastFocusedDiv = nextDiv;
-        }
-      } else {
-        lastFocusedDiv.focus();
+  document.getElementById('deleting').addEventListener('click', function () {
+    if (lastFocusedDiv) {
+      lastFocusedDiv.textContent = lastFocusedDiv.textContent.slice(0, -1);
+
+      if (!lastFocusedDiv.textContent.trim()) {
+        lastFocusedDiv.innerHTML = '&nbsp;';
+        moveToPreviousDiv();
       }
     }
   });

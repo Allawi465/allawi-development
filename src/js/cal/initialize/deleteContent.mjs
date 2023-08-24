@@ -47,4 +47,4 @@ function handleFocus(e) {
   }
 }
 
-export { handleFocus, handleNumberInput };
+export { handleFocus, handleNumberInput, setCursorAtEnd };

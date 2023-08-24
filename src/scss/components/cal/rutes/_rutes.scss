@@ -3,19 +3,21 @@
   grid-template-columns: repeat(17, 65px);
   grid-template-rows: repeat(5, 70px);
   grid-column-gap: 0px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 1);
   border-right: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
-  width: 100%;
+  width: 69.1em;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .numbers {
   z-index: 1;
   text-align: center;
   line-height: 60px;
-  border: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
   border-top: 1px solid #cccccc;
   display: flex;
   font-size: 35px !important;
@@ -31,12 +33,12 @@
 }
 
 .navbar {
-  margin-top: 40px;
+  margin-top: 10px;
   gap: 5px;
 }
 
 .selected {
-  border: 2px solid purple !important;
+  border: 2px solid #4b71eb !important;
 }
 
 .double-line {

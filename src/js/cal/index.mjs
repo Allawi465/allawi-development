@@ -35,11 +35,6 @@ document
 
 document.addEventListener('DOMContentLoaded', function () {
   initializeEventListeners();
-  const divs = document.querySelectorAll('.numbers');
-  divs.forEach((div) => {
-    div.addEventListener('click', toggleSelected);
-    console.log('Event listener added to: ', div);
-  });
 });
 
 function renderDivs(numberOfDivs) {
@@ -64,6 +59,7 @@ function renderDivs(numberOfDivs) {
   }
 
   const divs = document.querySelectorAll('.numbers');
+
   divs.forEach((div) => {
     div.addEventListener('click', toggleSelected);
   });

@@ -2,33 +2,66 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: linear-gradient(120deg, rgb(253, 252, 252) 12%, #ebedee 88%);
+}
+
 main {
   padding-right: 0.45rem !important;
   padding-left: 0.45rem !important;
 }
 
+.logo {
+  background: url("/images/rainbow.svg") #0090ff repeat center center;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: auto;
+  background-clip: border-box;
+  background-size: 500px auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0.1rem rgba(0, 0, 0, 0.1);
+  text-shadow: 0.2rem 0.2rem rgba(255, 255, 255, 0.2);
+}
+
 .cover-container {
-  max-width: 72em;
+  max-width: 82em;
   padding: 1rem !important;
 }
 
 .nav-masthead .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  color: rgba(0, 0, 0, 0.7);
   border-bottom: 0.25rem solid transparent;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, 0.25);
 }
 
 .nav-masthead .nav-link + .nav-link {
   margin-left: 1rem;
 }
 
+.nav-masthead .nav-link:hover {
+  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
+  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-masthead .active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.25rem;
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
 }
 
 .mainPage {
@@ -59,8 +92,8 @@ textarea {
   background-repeat: no-repeat;
   background-position: 0 0;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-  overflow-y: auto; /* Enable vertical scrolling */
-  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.5); /* Thumb Color, Track Color */
+  overflow-y: auto;
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.5);
   scrollbar-width: thin;
 }
 
@@ -159,59 +192,47 @@ textarea::-webkit-scrollbar-track {
   height: 1px;
 }
 
-/*
-  Theme: numeric
-*/
-.keyboard2.numeric-theme {
-  max-width: 320px;
-  margin: 0 auto;
-  background: transparent;
-}
-
-.keyboard2.numeric-theme + .simple-keyboard-preview {
-  max-width: 320px;
-}
-
-.keyboard2.simple-keyboard.hg-theme-default.numeric-theme .hg-button.hg-standardBtn.hg-button-at {
-  max-width: none;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.keyboard2.numeric-theme .hg-button {
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-}
-.keyboard2.numeric-theme .hg-button:hover {
-  background: #ffcc33;
-  color: black;
-}
-
 .calculator {
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 300px;
+  padding: 10px;
+  width: 100%;
 }
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(10, 115px);
+  grid-template-rows: repeat(5, 60px);
+  gap: 10px;
+}
+
+.bottom-buttons {
+  grid-column: span 10;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bottom-upper {
+  grid-column: span 6;
+  display: flex;
   gap: 10px;
 }
 
 .button {
-  font-size: 18px;
+  font-size: 20px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   color: black;
 }
-
 .button:hover {
-  background-color: #f2f2f2;
+  background: #ffcc33;
+  color: black;
+  border-color: #ffcc33;
 }
 
 .parent {
@@ -219,19 +240,21 @@ textarea::-webkit-scrollbar-track {
   grid-template-columns: repeat(17, 65px);
   grid-template-rows: repeat(5, 70px);
   grid-column-gap: 0px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(255, 255, 255);
   border-right: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
-  width: 100%;
+  width: 69.1em;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .numbers {
   z-index: 1;
   text-align: center;
   line-height: 60px;
-  border: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
   border-top: 1px solid #cccccc;
   display: flex;
   font-size: 35px !important;
@@ -247,12 +270,12 @@ textarea::-webkit-scrollbar-track {
 }
 
 .navbar {
-  margin-top: 40px;
+  margin-top: 10px;
   gap: 5px;
 }
 
 .selected {
-  border: 2px solid purple !important;
+  border: 2px solid #4b71eb !important;
 }
 
 .double-line {
