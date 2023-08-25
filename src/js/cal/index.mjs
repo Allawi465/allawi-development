@@ -7,45 +7,37 @@ import { applyBorderToDivs } from './border/index.mjs';
 
 let fractionMode = false;
 
-document
-  .getElementById('fractionButton')
-  .addEventListener('click', function () {
-    fractionMode = true;
+function attachEventListeners() {
+  document
+    .getElementById('fractionButton')
+    .addEventListener('click', function () {
+      fractionMode = true;
+    });
+
+  document
+    .getElementById('doubleLineItem')
+    .addEventListener('click', function () {
+      applyBorderToDivs('double-line');
+    });
+
+  document
+    .getElementById('singleLineItem')
+    .addEventListener('click', function () {
+      applyBorderToDivs('single-line');
+    });
+
+  document.getElementById('clearButton').addEventListener('click', function () {
+    clearAllDivs();
   });
 
-document
-  .getElementById('doubleLineItem')
-  .addEventListener('click', function () {
-    applyBorderToDivs('double-line');
-  });
+  document
+    .getElementById('clearSelected')
+    .addEventListener('click', clearSelectedDivs);
 
-document
-  .getElementById('singleLineItem')
-  .addEventListener('click', function () {
-    applyBorderToDivs('single-line');
-  });
+  const divs = document.querySelectorAll('.numbers');
 
-document.getElementById('clearButton').addEventListener('click', function () {
-  clearAllDivs();
-});
-
-document
-  .getElementById('clearSelected')
-  .addEventListener('click', clearSelectedDivs);
-
-document.addEventListener('DOMContentLoaded', function () {
-  initializeEventListeners();
-});
-
-function renderDivs(numberOfDivs) {
-  const parentDiv = document.querySelector('.parent');
-
-  for (let i = 0; i < numberOfDivs; i++) {
-    const div = document.createElement('div');
-    div.contentEditable = 'true';
-    div.innerHTML = '&nbsp;';
-    div.classList.add('numbers');
-
+  divs.forEach((div) => {
+    div.addEventListener('click', toggleSelected);
     div.addEventListener('input', handleNumberInput);
     div.addEventListener('focus', handleFocus);
     div.addEventListener('click', function () {
@@ -54,17 +46,56 @@ function renderDivs(numberOfDivs) {
         fractionMode = false;
       }
     });
+  });
+}
+function renderDivs(numberOfDivs) {
+  const parentDiv = document.querySelector('.parent');
 
+  for (let i = 0; i < numberOfDivs; i++) {
+    const div = document.createElement('div');
+    div.contentEditable = 'true';
+    div.innerHTML = '&nbsp;';
+    div.classList.add('numbers');
     parentDiv.appendChild(div);
   }
 
-  const divs = document.querySelectorAll('.numbers');
+  attachEventListeners();
+}
 
-  divs.forEach((div) => {
-    div.addEventListener('click', toggleSelected);
-  });
+let divSize;
+let resizeTimeout;
+
+function setDivSize() {
+  if (window.matchMedia('(max-width: 478px)').matches) {
+    divSize = 30;
+  } else if (window.matchMedia('(max-width: 612px)').matches) {
+    divSize = 35;
+  } else if (window.matchMedia('(max-width: 718px)').matches) {
+    divSize = 45;
+  } else if (window.matchMedia('(max-width: 788px)').matches) {
+    divSize = 50;
+  } else if (window.matchMedia('(max-width: 846px)').matches) {
+    divSize = 55;
+  } else if (window.matchMedia('(max-width: 914px)').matches) {
+    divSize = 60;
+  } else if (window.matchMedia('(max-width: 976px)').matches) {
+    divSize = 65;
+  } else if (window.matchMedia('(max-width: 1059px)').matches) {
+    divSize = 70;
+  } else {
+    divSize = 75;
+  }
+  renderDivs(divSize);
 }
 
 window.addEventListener('load', function () {
-  renderDivs(96);
+  initializeEventListeners();
+  setDivSize();
+
+  window.addEventListener('resize', function () {
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout);
+    }
+    resizeTimeout = setTimeout(setDivSize, 250);
+  });
 });

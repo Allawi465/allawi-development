@@ -19,12 +19,34 @@
   border: none;
 
   &:hover {
-    background: #FFCC33;
+    background: #ffcc33;
     color: black;
   }
 }
 
 .keyboard1.myTheme1 .hg-button:active {
-  background: #FFCC33;
+  background: #ffcc33;
   color: black;
+}
+
+trix-editor div {
+  color: black;
+  text-align: left !important;
+  overflow: hidden;
+  width: 100%;
+  word-break: break-all;
+}
+
+trix-editor {
+  color: black;
+  text-align: left !important;
+  min-height: 20em !important;
+}
+
+.trix-content {
+  line-height: 1.5;
+}
+
+.mainPage {
+  margin-top: 20px;
 }

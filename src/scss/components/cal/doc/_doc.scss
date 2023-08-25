@@ -1,0 +1,13 @@
+.accordionP {
+  text-align: left;
+}
+
+.bruksanvisning {
+  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
+  border: none !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.bruksanvisning:hover {
+  background-image: linear-gradient(to top left, #38a2d7, #561139);
+}

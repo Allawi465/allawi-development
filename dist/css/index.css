@@ -12,7 +12,8 @@ main {
 }
 
 .logo {
-  background: url("/images/rainbow.svg") #0090ff repeat center center;
+  font-size: 3em;
+  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
   background-position-x: center;
   background-position-y: center;
   background-size: auto;
@@ -64,56 +65,6 @@ main {
   background-image: linear-gradient(to bottom right, #38a2d7, #561139);
 }
 
-.mainPage {
-  display: flex;
-  font-family: sans-serif;
-  line-height: 30px;
-  font-size: 30px;
-  margin: 0px 150px 40px;
-  background-size: 100% 30px;
-  background-position: 0 0;
-  background-image: linear-gradient(to bottom, white, white 29px, lightskyblue);
-  box-shadow: #cdcdcd 1px 2px, #d2d2d2 2px 4px, #d7d7d7 3px 6px, #dcdcdc 4px 8px, #e1e1e1 5px 10px, #e6e6e6 6px 12px, #ebebeb 7px 14px, #f0f0f0 8px 16px, #f5f5f5 9px 18px, #fafafa 10px 20px, rgba(0, 0, 0, 0.3) 10px 20px 15px;
-}
-
-textarea {
-  flex: 1;
-  outline: none;
-  min-height: 200px;
-  max-height: 360px;
-  font-size: 30px;
-  line-height: 30px;
-  padding: 1em;
-  border: none;
-  color: #444;
-  letter-spacing: 0.02em;
-  background-size: 100% 100%;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-  overflow-y: auto;
-  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.5);
-  scrollbar-width: thin;
-}
-
-textarea::-webkit-scrollbar {
-  width: 8px;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-textarea::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-textarea::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-textarea::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 @media (max-width: 710px) {
   main {
     padding-right: unset !important;
@@ -147,13 +98,35 @@ textarea::-webkit-scrollbar-track {
   border: none;
 }
 .keyboard1.myTheme1 .hg-button:hover {
-  background: #FFCC33;
+  background: #ffcc33;
   color: black;
 }
 
 .keyboard1.myTheme1 .hg-button:active {
-  background: #FFCC33;
+  background: #ffcc33;
   color: black;
+}
+
+trix-editor div {
+  color: black;
+  text-align: left !important;
+  overflow: hidden;
+  width: 100%;
+  word-break: break-all;
+}
+
+trix-editor {
+  color: black;
+  text-align: left !important;
+  min-height: 20em !important;
+}
+
+.trix-content {
+  line-height: 1.5;
+}
+
+.mainPage {
+  margin-top: 20px;
 }
 
 .fraction {
@@ -192,18 +165,24 @@ textarea::-webkit-scrollbar-track {
   height: 1px;
 }
 
-.calculator {
+.imathContainer {
+  background: #fff;
+  margin-top: 20px;
   border-radius: 10px;
-  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem;
+  margin-bottom: 20px;
+}
+
+.calculator {
   padding: 5px;
-  max-width: 69.1em;
+  max-width: 63em;
   margin: auto;
 }
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(9, 100px);
+  grid-template-columns: repeat(10, 95px);
   grid-template-rows: repeat(5, 60px);
   gap: 5px;
 }
@@ -237,16 +216,26 @@ textarea::-webkit-scrollbar-track {
   border-color: #ffcc33;
 }
 
+@media (max-width: 1059px) {
+  .buttons {
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .imathContainer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
 .parent {
   display: grid;
-  grid-template-columns: repeat(16, 65px);
+  grid-template-columns: repeat(15, 65px);
   grid-template-rows: repeat(5, 70px);
   grid-column-gap: 0px;
   background: rgb(255, 255, 255);
   border-right: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
-  max-width: 65em;
+  max-width: 61em;
+  height: 350px;
   margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -273,36 +262,48 @@ textarea::-webkit-scrollbar-track {
 
 .navbar {
   max-width: 100%;
+  margin-bottom: 10px;
+  max-width: 61em;
+  margin: auto;
 }
 
 .navbar span {
   display: flex;
-  margin-bottom: 10px;
   border: 1px solid #bbb;
   border-top-color: rgb(187, 187, 187);
   border-bottom-color: rgb(187, 187, 187);
   border-top-color: #ccc;
-  border-bottom-color: #888;
   border-radius: 3px;
 }
 
 .btns-bar {
   position: relative;
-  float: left;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 0.75em;
+  font-size: 0.85em;
   font-weight: 600;
   white-space: nowrap;
-  padding: 0 0.5em;
-  margin: 0;
+  padding: 0.5em 0.5em;
   outline: none;
   border: none;
-  border-bottom-width: medium;
-  border-bottom-style: none;
-  border-bottom-color: currentcolor;
-  border-bottom: 1px solid #ddd;
-  border-radius: 0;
+  border-right: 1px solid rgb(187, 187, 187);
   background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease-in-out;
+}
+
+.btns-bar:hover {
+  background: #757575;
+  color: white;
+}
+
+.btns-bar svg {
+  margin-left: 2px;
+}
+
+.btns-bar:last-child {
+  border-right: none;
 }
 
 .selected {
@@ -315,6 +316,102 @@ textarea::-webkit-scrollbar-track {
 
 .single-line {
   border-bottom: 3px solid black;
+}
+
+@media (max-width: 1059px) {
+  .parent {
+    grid-template-columns: repeat(14, 65px);
+    max-width: 56.9em;
+  }
+  .navbar {
+    max-width: 57em;
+  }
+}
+@media (max-width: 976px) {
+  .parent {
+    grid-template-columns: repeat(13, 65px);
+    max-width: 52.9em;
+  }
+  .navbar {
+    max-width: 52.9em;
+  }
+}
+@media (max-width: 914px) {
+  .parent {
+    grid-template-columns: repeat(12, 65px);
+    max-width: 48.8em;
+  }
+  .navbar {
+    max-width: 48.8em;
+  }
+}
+@media (max-width: 846px) {
+  .parent {
+    grid-template-columns: repeat(11, 65px);
+    max-width: 44.8em;
+  }
+  .navbar {
+    max-width: 48.8em;
+  }
+}
+@media (max-width: 788px) {
+  .parent {
+    grid-template-columns: repeat(10, 65px);
+    max-width: 40.6em;
+  }
+  .navbar {
+    max-width: 40.6em;
+  }
+}
+@media (max-width: 718px) {
+  .parent {
+    grid-template-columns: repeat(9, 65px);
+    max-width: 36.6em;
+  }
+  .navbar {
+    max-width: 36.6em;
+  }
+}
+@media (max-width: 612px) {
+  .parent {
+    grid-template-columns: repeat(7, 65px);
+    max-width: 28.5em;
+  }
+  .navbar {
+    max-width: 36.6em;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+}
+@media (max-width: 478px) {
+  .parent {
+    grid-template-columns: repeat(6, 70px);
+    max-width: 26.3em;
+  }
+  .navbar {
+    max-width: 26.3em;
+  }
+}
+@media (max-width: 477px) {
+  .imathContainer {
+    display: none;
+  }
+  .contentIf {
+    display: block !important;
+  }
+}
+.accordionP {
+  text-align: left;
+}
+
+.bruksanvisning {
+  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
+  border: none !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.bruksanvisning:hover {
+  background-image: linear-gradient(to top left, #38a2d7, #561139);
 }
 
 /*# sourceMappingURL=index.css.map */

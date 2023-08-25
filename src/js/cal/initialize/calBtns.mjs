@@ -41,6 +41,13 @@ function moveToPreviousDiv() {
   }
 }
 
+function handleInputLimit(elem) {
+  if (elem.textContent.length >= 3) {
+    elem.textContent = elem.textContent.slice(0, 3);
+    moveToNextDiv();
+  }
+}
+
 function initializeEventListeners() {
   document.addEventListener('mousedown', function (e) {
     const currentlyFocusedDiv = getFocusedNumberDiv();
@@ -61,9 +68,7 @@ function initializeEventListeners() {
       lastFocusedDiv.textContent += e.target.textContent;
       lastFocusedDiv.textContent = lastFocusedDiv.textContent.trim();
 
-      if (lastFocusedDiv.textContent.length >= 3) {
-        moveToNextDiv();
-      }
+      handleInputLimit(lastFocusedDiv);
     }
   });
 

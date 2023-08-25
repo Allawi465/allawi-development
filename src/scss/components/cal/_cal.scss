@@ -1,15 +1,21 @@
-.calculator {
+.imathContainer {
+  background: #fff;
+  margin-top: 20px;
   border-radius: 10px;
-  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem;
+  margin-bottom: 20px;
+}
+
+.calculator {
   padding: 5px;
-  max-width: 69.1em;
+  max-width: 63em;
   margin: auto;
 }
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(9, 100px);
+  grid-template-columns: repeat(10, 95px);
   grid-template-rows: repeat(5, 60px);
   gap: 5px;
 }
@@ -41,5 +47,16 @@
     background: #ffcc33;
     color: black;
     border-color: #ffcc33;
+  }
+}
+
+@media (max-width: 1059px) {
+  .buttons {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .imathContainer {
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 }
