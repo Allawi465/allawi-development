@@ -66,5 +66,5 @@ function renderDivs(numberOfDivs) {
 }
 
 window.addEventListener('load', function () {
-  renderDivs(85);
+  renderDivs(96);
 });
