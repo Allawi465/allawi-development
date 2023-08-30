@@ -77,52 +77,37 @@ main {
     margin: unset;
   }
 }
-.simple-keyboard1 {
-  max-width: 850px;
-}
-
-.keyboard1.myTheme1 {
-  background-color: transparent;
-  border-radius: 0;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.keyboard1.myTheme1 .hg-button {
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-}
-.keyboard1.myTheme1 .hg-button:hover {
-  background: #ffcc33;
-  color: black;
-}
-
-.keyboard1.myTheme1 .hg-button:active {
-  background: #ffcc33;
-  color: black;
-}
-
-trix-editor div {
+.trix-content div {
   color: black;
   text-align: left !important;
-  overflow: hidden;
-  width: 100%;
   word-break: break-all;
 }
 
+trix-editor .attachment__progress {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+}
+
 trix-editor {
+  border: none !important;
   color: black;
   text-align: left !important;
-  min-height: 20em !important;
+  min-height: 200px !important;
+  max-height: 400px !important;
+  background: white;
+  overflow-y: scroll;
 }
 
 .trix-content {
   line-height: 1.5;
+}
+
+.trix-content img {
+  max-width: 100%;
+  height: auto;
 }
 
 .mainPage {
@@ -200,6 +185,10 @@ trix-editor {
   gap: 5px;
 }
 
+#none {
+  display: block;
+}
+
 .button {
   font-size: 20px;
   padding: 10px;
@@ -223,6 +212,32 @@ trix-editor {
   .imathContainer {
     margin-top: 10px;
     margin-bottom: 20px;
+  }
+}
+@media (max-width: 440px) {
+  #none {
+    display: none;
+  }
+  .bottom-upper {
+    grid-column: span 5;
+    width: 100% !important;
+  }
+  #space,
+  #deleting {
+    width: 100%;
+  }
+  .buttons {
+    grid-template-rows: repeat(4, 50px);
+  }
+  .button {
+    padding-top: auto;
+    padding-bottom: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .calculator {
+    max-width: 100%;
+    padding: 0;
   }
 }
 .parent {
@@ -392,12 +407,34 @@ trix-editor {
     max-width: 26.3em;
   }
 }
-@media (max-width: 477px) {
+@media (max-width: 440px) {
+  .parent {
+    grid-template-columns: repeat(5, 70px);
+    max-width: 21.9em;
+  }
+  .navbar {
+    max-width: 100%;
+  }
+  .navbar span {
+    flex-wrap: wrap;
+    border: none;
+  }
+}
+@media (max-width: 371px) {
+  .parent {
+    grid-template-columns: repeat(4, 70px);
+    max-width: 17.5em;
+  }
+}
+@media (max-width: 299px) {
   .imathContainer {
     display: none;
   }
   .contentIf {
     display: block !important;
+  }
+  #imath {
+    margin-bottom: auto;
   }
 }
 .accordionP {

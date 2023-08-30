@@ -48,8 +48,11 @@ function attachEventListeners() {
     });
   });
 }
+
 function renderDivs(numberOfDivs) {
   const parentDiv = document.querySelector('.parent');
+
+  parentDiv.innerHTML = '';
 
   for (let i = 0; i < numberOfDivs; i++) {
     const div = document.createElement('div');
@@ -59,14 +62,20 @@ function renderDivs(numberOfDivs) {
     parentDiv.appendChild(div);
   }
 
+  const firstDiv = parentDiv.firstChild;
+  firstDiv.focus();
+
   attachEventListeners();
 }
 
 let divSize;
-let resizeTimeout;
 
 function setDivSize() {
-  if (window.matchMedia('(max-width: 478px)').matches) {
+  if (window.matchMedia('(max-width: 371px)').matches) {
+    divSize = 20;
+  } else if (window.matchMedia('(max-width: 440px)').matches) {
+    divSize = 25;
+  } else if (window.matchMedia('(max-width: 478px)').matches) {
     divSize = 30;
   } else if (window.matchMedia('(max-width: 612px)').matches) {
     divSize = 35;
@@ -86,16 +95,12 @@ function setDivSize() {
     divSize = 75;
   }
   renderDivs(divSize);
+  console.log('divSize:', divSize);
 }
 
 window.addEventListener('load', function () {
   initializeEventListeners();
   setDivSize();
 
-  window.addEventListener('resize', function () {
-    if (resizeTimeout) {
-      clearTimeout(resizeTimeout);
-    }
-    resizeTimeout = setTimeout(setDivSize, 250);
-  });
+  window.addEventListener('resize', setDivSize);
 });

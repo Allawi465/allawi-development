@@ -1,50 +1,36 @@
-.simple-keyboard1 {
-  max-width: 850px;
-}
 
-.keyboard1.myTheme1 {
-  background-color: transparent;
-  border-radius: 0;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
 
-.keyboard1.myTheme1 .hg-button {
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-
-  &:hover {
-    background: #ffcc33;
-    color: black;
-  }
-}
-
-.keyboard1.myTheme1 .hg-button:active {
-  background: #ffcc33;
-  color: black;
-}
-
-trix-editor div {
+.trix-content div {
   color: black;
   text-align: left !important;
-  overflow: hidden;
-  width: 100%;
   word-break: break-all;
 }
 
+trix-editor .attachment__progress {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+}
+
 trix-editor {
+  border: none !important;
   color: black;
   text-align: left !important;
-  min-height: 20em !important;
+  min-height: 200px !important;
+  max-height: 400px !important;
+  background: white;
+  overflow-y: scroll;
 }
 
 .trix-content {
   line-height: 1.5;
+}
+
+.trix-content img {
+  max-width: 100%;
+  height: auto;
 }
 
 .mainPage {

@@ -174,11 +174,38 @@
   }
 }
 
-@media (max-width: 477px) {
+@media (max-width: 440px) {
+  .parent {
+    grid-template-columns: repeat(5, 70px);
+    max-width: 21.9em;
+  }
+
+  .navbar {
+    max-width: 100%;
+  }
+
+  .navbar span {
+    flex-wrap: wrap;
+    border: none;
+  }
+}
+
+@media (max-width: 371px) {
+  .parent {
+    grid-template-columns: repeat(4, 70px);
+    max-width: 17.5em;
+  }
+}
+
+@media (max-width: 299px) {
   .imathContainer {
     display: none;
   }
   .contentIf {
     display: block !important;
+  }
+
+  #imath {
+    margin-bottom: auto;
   }
 }
