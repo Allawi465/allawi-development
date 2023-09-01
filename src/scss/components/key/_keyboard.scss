@@ -22,7 +22,13 @@ trix-editor {
   min-height: 374px !important;
   max-height: 374px !important;
   background: white;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+trix-editor {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 trix-editor .attachment {
