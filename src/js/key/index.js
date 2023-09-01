@@ -38,15 +38,6 @@ const Keyboard = {
 
     // Add to DOM
     keyboard.appendChild(this.elements.keysContainer);
-
-    // Automatically use keyboard for elements with .use-keyboard-input
-    document.querySelectorAll('.input').forEach((element) => {
-      element.addEventListener('focus', () => {
-        this.open(element.value, (currentValue) => {
-          element.value = currentValue;
-        });
-      });
-    });
   },
 
   _createKeys() {
@@ -244,4 +235,5 @@ const Keyboard = {
 
 document.addEventListener('trix-initialize', function (event) {
   Keyboard.init();
+  console.log('ready');
 });
