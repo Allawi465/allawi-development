@@ -98,8 +98,8 @@ trix-editor {
   max-width: 61.4em;
   color: black;
   text-align: left !important;
-  min-height: 430.4px !important;
-  max-height: 430.4px !important;
+  min-height: 374px !important;
+  max-height: 374px !important;
   background: white;
   overflow-y: scroll;
 }
@@ -125,6 +125,12 @@ trix-editor .attachment__progress {
   display: none;
 }
 
+.trix-content .attachment-gallery .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 100% !important;
+}
+
 img {
   object-fit: cover;
 }
@@ -138,26 +144,30 @@ img {
   height: auto;
 }
 
+.trix-button-row {
+  gap: 10px;
+}
+
 .keyboard {
-  width: 100%;
+  width: 95%;
   padding: 5px 0;
-  display: grid;
   background: transparent;
   user-select: none;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .keyboard__keys {
   display: grid;
   grid-template-columns: repeat(11, 85px);
-  grid-template-rows: repeat(4, 60px);
+  grid-template-rows: repeat(5, 60px);
   gap: 5px;
-  margin: auto;
 }
 
 .keyboard__key {
   font-size: 20px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: none;
   background-color: rgba(191, 191, 191, 0.9882352941);
   border-radius: 5px;
   cursor: pointer;
@@ -166,8 +176,9 @@ img {
   position: relative;
 }
 .keyboard__key:hover {
-  border: 1px solid #ccc;
-  background-color: transparent;
+  background: #ffcc33;
+  color: black;
+  border: 1px solid #ffcc33;
 }
 
 .keyboard__key {
@@ -183,9 +194,14 @@ img {
   width: 100%;
 }
 
+.keyboard__key--height {
+  width: 100%;
+  grid-column: span 5;
+}
+
 .keyboard__key--extra-wide {
   width: 100%;
-  grid-column: span 2;
+  grid-column: span 6;
 }
 
 .keyboard__key--activatable::after {
@@ -200,13 +216,65 @@ img {
 }
 
 .keyboard__key--active::after {
-  background: #08ff00;
+  background: #1c0099;
 }
 
 .keyboard__key--dark {
   background: rgba(0, 0, 0, 0.25);
 }
 
+@media (max-width: 1059px) {
+  .keyboard {
+    width: 100%;
+  }
+  .keyboard__keys {
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(4, 60px);
+  }
+}
+@media (max-width: 522px) {
+  .material-icons {
+    font-size: 15px !important;
+  }
+  .keyboard__keys {
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(5, 50px);
+  }
+  .keyboard__key {
+    font-size: 17px;
+    padding: 4px;
+  }
+  .keyboard__key--activatable::after {
+    display: none;
+  }
+}
+@media (max-width: 310px) {
+  .material-icons {
+    font-size: 15px !important;
+  }
+  .keyboard__keys {
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(5, 50px);
+  }
+  .keyboard__key {
+    font-size: 15px;
+    padding: 2px;
+  }
+}
+@media (max-width: 244px) {
+  .keyboard {
+    display: none;
+  }
+  trix-editor {
+    border: none !important;
+    margin: auto !important;
+    max-width: 61.4em;
+    color: black;
+    text-align: left !important;
+    min-height: 1000px !important;
+    overflow-y: none;
+  }
+}
 .fraction {
   display: inline-block;
   text-align: center;

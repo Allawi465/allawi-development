@@ -72,8 +72,8 @@ const Keyboard = {
       'u',
       'i',
       'o',
-      'caps',
       'p',
+      'å',
       'a',
       's',
       'd',
@@ -81,9 +81,10 @@ const Keyboard = {
       'g',
       'h',
       'j',
-      'enter',
       'k',
       'l',
+      'ø',
+      'æ',
       'z',
       'x',
       'c',
@@ -94,7 +95,9 @@ const Keyboard = {
       ',',
       '.',
       '?',
+      'caps',
       'space',
+      'enter',
     ];
 
     // Creates HTML for an icon
@@ -161,7 +164,10 @@ const Keyboard = {
           break;
 
         case 'enter':
-          keyElement.classList.add('keyboard__key--wide');
+          keyElement.classList.add(
+            'keyboard__key--wide',
+            'keyboard__key--height'
+          );
           keyElement.innerHTML = createIconHTML('keyboard_return');
 
           keyElement.addEventListener('click', () => {
