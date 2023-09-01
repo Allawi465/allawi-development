@@ -1,9 +1,45 @@
+.keyContainer {
+  background: #fff;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem;
+  margin-bottom: 20px;
+}
 
+trix-toolbar {
+  max-width: 61.4em;
+  margin: auto;
+  padding-top: 10px;
+}
+
+trix-editor {
+  border: none !important;
+  margin: auto !important;
+  max-width: 61.4em;
+  color: black;
+  text-align: left !important;
+  min-height: 430.4px !important;
+  max-height: 430.4px !important;
+  background: white;
+  overflow-y: scroll;
+}
+
+trix-editor .attachment {
+  position: relative;
+  float: left;
+  max-width: 100%;
+  margin: 10px 10px 10px 0;
+  padding: 0;
+  color: #666;
+  font-size: 13px;
+}
 
 .trix-content div {
   color: black;
   text-align: left !important;
   word-break: break-all;
+  margin-top: 3px !important;
 }
 
 trix-editor .attachment__progress {
@@ -12,16 +48,6 @@ trix-editor .attachment__progress {
 
 img {
   object-fit: cover;
-}
-
-trix-editor {
-  border: none !important;
-  color: black;
-  text-align: left !important;
-  min-height: 200px !important;
-  max-height: 400px !important;
-  background: white;
-  overflow-y: scroll;
 }
 
 .trix-content {
@@ -33,6 +59,72 @@ trix-editor {
   height: auto;
 }
 
-.mainPage {
-  margin-top: 20px;
+.keyboard {
+  width: 100%;
+  padding: 5px 0;
+  display: grid;
+  background: transparent;
+  user-select: none;
+}
+
+.keyboard__keys {
+  display: grid;
+  grid-template-columns: repeat(11, 85px);
+  grid-template-rows: repeat(4, 60px);
+  gap: 5px;
+  margin: auto;
+}
+
+.keyboard__key {
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #bfbfbffc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: black;
+  position: relative;
+
+  &:hover {
+    border: 1px solid #ccc;
+    background-color: transparent;
+  }
+}
+
+.keyboard__key {
+  border: 1px solid #ccc;
+  background-color: #bfbfbffc;
+}
+
+.keyboard__key:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.keyboard__key--wide {
+  width: 100%;
+}
+
+.keyboard__key--extra-wide {
+  width: 100%;
+  grid-column: span 2;
+}
+
+.keyboard__key--activatable::after {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+  background: #08ff00;
+}
+
+.keyboard__key--dark {
+  background: rgba(0, 0, 0, 0.25);
 }

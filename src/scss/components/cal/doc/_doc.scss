@@ -1,13 +1,40 @@
+$green: #5c7568;
+$peach: #3d0c29;
+$sand: #27769e;
+
 .accordionP {
   text-align: left;
 }
 
 .bruksanvisning {
-  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
-  border: none !important;
-  transition: all 0.5s ease-in-out !important;
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right, $green 0%, $sand 50%, $peach 100%);
+  background: linear-gradient(to right, $green 0%, $sand 50%, $peach 100%);
+  background-size: 500%;
+  border: none;
+  color: white !important;
+  transition: background-color 1s !important;
+  cursor: pointer;
+  user-select: none;
 }
 
-.bruksanvisning:hover {
-  background-image: linear-gradient(to top left, #38a2d7, #561139);
+.bruksanvisning:hover,
+.bruksanvisning:focus {
+  animation-name: gradient;
+  -webkit-animation-name: gradient;
+  animation-duration: 2s;
+  -webkit-animation-duration: s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }

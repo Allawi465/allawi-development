@@ -1,13 +1,13 @@
 .parent {
   display: grid;
-  grid-template-columns: repeat(15, 65px);
+  grid-template-columns: repeat(14, 70px);
   grid-template-rows: repeat(5, 70px);
   grid-column-gap: 0px;
   background: rgba(255, 255, 255, 1);
   border-right: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
-  max-width: 61em;
+  max-width: 61.4em;
   height: 350px;
   margin-bottom: 10px;
   margin-left: auto;

@@ -89,13 +89,10 @@ function setDivSize() {
     divSize = 60;
   } else if (window.matchMedia('(max-width: 976px)').matches) {
     divSize = 65;
-  } else if (window.matchMedia('(max-width: 1059px)').matches) {
-    divSize = 70;
   } else {
-    divSize = 75;
+    divSize = 70;
   }
   renderDivs(divSize);
-  console.log('divSize:', divSize);
 }
 
 window.addEventListener('load', function () {

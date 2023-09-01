@@ -14,30 +14,44 @@ function getFocusedNumberDiv() {
 }
 
 function moveToNextDiv() {
-  if (lastFocusedDiv) {
-    let nextDiv = lastFocusedDiv.nextElementSibling;
-    while (nextDiv && !nextDiv.isContentEditable) {
-      nextDiv = nextDiv.nextElementSibling;
-    }
-    if (nextDiv) {
-      nextDiv.focus();
-      lastFocusedDiv = nextDiv;
-      setCursorAtEnd(nextDiv);
-    }
+  let nextDiv = null;
+
+  if (lastFocusedDiv.classList.contains('denominator')) {
+    nextDiv = lastFocusedDiv.closest('.numbers').nextElementSibling;
+  } else {
+    nextDiv = lastFocusedDiv.nextElementSibling;
+  }
+
+  while (nextDiv && !isContentEditable(nextDiv)) {
+    nextDiv = nextDiv.nextElementSibling;
+  }
+
+  if (nextDiv) {
+    let targetDiv = nextDiv.querySelector('.numerator') || nextDiv;
+    targetDiv.focus();
+    lastFocusedDiv = targetDiv;
+    setCursorAtEnd(targetDiv);
   }
 }
 
 function moveToPreviousDiv() {
-  if (lastFocusedDiv) {
-    let prevDiv = lastFocusedDiv.previousElementSibling;
-    while (prevDiv && !prevDiv.isContentEditable) {
-      prevDiv = prevDiv.previousElementSibling;
-    }
-    if (prevDiv) {
-      setCursorAtEnd(prevDiv);
-      prevDiv.focus();
-      lastFocusedDiv = prevDiv;
-    }
+  let prevDiv = null;
+
+  if (lastFocusedDiv.classList.contains('numerator')) {
+    prevDiv = lastFocusedDiv.closest('.numbers').previousElementSibling;
+  } else {
+    prevDiv = lastFocusedDiv.previousElementSibling;
+  }
+
+  while (prevDiv && !isContentEditable(prevDiv)) {
+    prevDiv = prevDiv.previousElementSibling;
+  }
+
+  if (prevDiv) {
+    let targetDiv = prevDiv.querySelector('.denominator') || prevDiv;
+    targetDiv.focus();
+    lastFocusedDiv = targetDiv;
+    setCursorAtEnd(targetDiv);
   }
 }
 
@@ -46,6 +60,13 @@ function handleInputLimit(elem) {
     elem.textContent = elem.textContent.slice(0, 3);
     moveToNextDiv();
   }
+}
+
+function isContentEditable(element) {
+  return (
+    element.isContentEditable ||
+    element.querySelector('[contenteditable="true"]')
+  );
 }
 
 function initializeEventListeners() {

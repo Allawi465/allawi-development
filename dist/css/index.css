@@ -13,7 +13,7 @@ main {
 
 .logo {
   font-size: 3em;
-  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
+  background-image: linear-gradient(to bottom right, #38a1d6, #561139);
   background-position-x: center;
   background-position-y: center;
   background-size: auto;
@@ -77,10 +77,48 @@ main {
     margin: unset;
   }
 }
+.keyContainer {
+  background: #fff;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem;
+  margin-bottom: 20px;
+}
+
+trix-toolbar {
+  max-width: 61.4em;
+  margin: auto;
+  padding-top: 10px;
+}
+
+trix-editor {
+  border: none !important;
+  margin: auto !important;
+  max-width: 61.4em;
+  color: black;
+  text-align: left !important;
+  min-height: 430.4px !important;
+  max-height: 430.4px !important;
+  background: white;
+  overflow-y: scroll;
+}
+
+trix-editor .attachment {
+  position: relative;
+  float: left;
+  max-width: 100%;
+  margin: 10px 10px 10px 0;
+  padding: 0;
+  color: #666;
+  font-size: 13px;
+}
+
 .trix-content div {
   color: black;
   text-align: left !important;
   word-break: break-all;
+  margin-top: 3px !important;
 }
 
 trix-editor .attachment__progress {
@@ -89,16 +127,6 @@ trix-editor .attachment__progress {
 
 img {
   object-fit: cover;
-}
-
-trix-editor {
-  border: none !important;
-  color: black;
-  text-align: left !important;
-  min-height: 200px !important;
-  max-height: 400px !important;
-  background: white;
-  overflow-y: scroll;
 }
 
 .trix-content {
@@ -110,8 +138,73 @@ trix-editor {
   height: auto;
 }
 
-.mainPage {
-  margin-top: 20px;
+.keyboard {
+  width: 100%;
+  padding: 5px 0;
+  display: grid;
+  background: transparent;
+  user-select: none;
+}
+
+.keyboard__keys {
+  display: grid;
+  grid-template-columns: repeat(11, 85px);
+  grid-template-rows: repeat(4, 60px);
+  gap: 5px;
+  margin: auto;
+}
+
+.keyboard__key {
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: rgba(191, 191, 191, 0.9882352941);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: black;
+  position: relative;
+}
+.keyboard__key:hover {
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.keyboard__key {
+  border: 1px solid #ccc;
+  background-color: rgba(191, 191, 191, 0.9882352941);
+}
+
+.keyboard__key:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.keyboard__key--wide {
+  width: 100%;
+}
+
+.keyboard__key--extra-wide {
+  width: 100%;
+  grid-column: span 2;
+}
+
+.keyboard__key--activatable::after {
+  content: "";
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+  background: #08ff00;
+}
+
+.keyboard__key--dark {
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .fraction {
@@ -242,14 +335,14 @@ trix-editor {
 }
 .parent {
   display: grid;
-  grid-template-columns: repeat(15, 65px);
+  grid-template-columns: repeat(14, 70px);
   grid-template-rows: repeat(5, 70px);
   grid-column-gap: 0px;
   background: rgb(255, 255, 255);
   border-right: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
-  max-width: 61em;
+  max-width: 61.4em;
   height: 350px;
   margin-bottom: 10px;
   margin-left: auto;
@@ -442,13 +535,36 @@ trix-editor {
 }
 
 .bruksanvisning {
-  background-image: linear-gradient(to bottom right, #38a2d7, #561139);
-  border: none !important;
-  transition: all 0.5s ease-in-out !important;
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right, #5c7568 0%, #27769e 50%, #3d0c29 100%);
+  background: linear-gradient(to right, #5c7568 0%, #27769e 50%, #3d0c29 100%);
+  background-size: 500%;
+  border: none;
+  color: white !important;
+  transition: background-color 1s !important;
+  cursor: pointer;
+  user-select: none;
 }
 
-.bruksanvisning:hover {
-  background-image: linear-gradient(to top left, #38a2d7, #561139);
+.bruksanvisning:hover,
+.bruksanvisning:focus {
+  animation-name: gradient;
+  -webkit-animation-name: gradient;
+  animation-duration: 2s;
+  -webkit-animation-duration: s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
