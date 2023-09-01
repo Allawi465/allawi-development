@@ -1,6 +1,8 @@
 // our Original Stle
 
-@import "./components/main";
-@import "./components/keyboard";
-@import "./components/cal";
-@import "./components/buttons";
+@import './components/main';
+@import './components/key/keyboard';
+@import './components/cal/fraction/fraction';
+@import './components/cal/cal';
+@import './components/cal/rutes/rutes';
+@import './components/cal/doc/doc';
