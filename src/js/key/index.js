@@ -229,13 +229,13 @@ const Keyboard = {
   },
 };
 
-document.addEventListener('trix-initialize', function (event) {
+/* document.addEventListener('trix-initialize', function (event) {
   var trixEditor = document.querySelector('trix-editor');
   if (trixEditor && trixEditor.editor) {
     console.log(trixEditor.editor);
     trixEditor.editor.recordUndoEntry('Insert Text');
   }
-});
+}); */
 
 document.addEventListener('DOMContentLoaded', function (event) {
   Keyboard.init();
