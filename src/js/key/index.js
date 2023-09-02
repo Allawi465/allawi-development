@@ -1,11 +1,9 @@
+var trixEditor = document.querySelector('trix-editor');
 const imathContainer = document.querySelector('.keyContainer');
-const trixEditor = document.querySelector('trix-editor');
 const keyboard = document.createElement('div');
 keyboard.classList.add('keyboard');
 keyboard.setAttribute('id', 'keyboard');
 imathContainer.appendChild(keyboard);
-
-let firstCharacter = true;
 
 const Keyboard = {
   elements: {
@@ -97,8 +95,6 @@ const Keyboard = {
     };
 
     keyLayout.forEach((key) => {
-      const editor = trixEditor.editor;
-      editor.recordUndoEntry('text');
       const keyElement = document.createElement('button');
 
       // Add attributes/classes
@@ -234,6 +230,13 @@ const Keyboard = {
 };
 
 document.addEventListener('trix-initialize', function (event) {
+  var trixEditor = document.querySelector('trix-editor');
+  if (trixEditor && trixEditor.editor) {
+    console.log(trixEditor.editor);
+    trixEditor.editor.recordUndoEntry('Insert Text');
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function (event) {
   Keyboard.init();
-  console.log('ready');
 });
