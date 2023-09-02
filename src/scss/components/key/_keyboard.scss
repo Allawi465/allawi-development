@@ -25,6 +25,11 @@ trix-editor {
   overflow-y: auto;
 }
 
+.trix-button-group--history-tools,
+.trix-button-group-spacer {
+  display: none !important;
+}
+
 trix-editor {
   -webkit-appearance: none;
   -moz-appearance: none;
