@@ -7,7 +7,7 @@
   border-right: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   grid-row-gap: 0px;
-  max-width: 61.4em;
+  max-width: 61.3em;
   height: 350px;
   margin-bottom: 10px;
   margin-left: auto;
@@ -104,10 +104,10 @@
 @media (max-width: 976px) {
   .parent {
     grid-template-columns: repeat(13, 65px);
-    max-width: 52.9em;
+    max-width: 52.8em;
   }
   .navbar {
-    max-width: 52.9em;
+    max-width: 52.8em;
   }
 }
 
